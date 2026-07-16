@@ -1,0 +1,22 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  - job_name: traffic-gateway
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["traffic-gateway:8080"]
+
+  - job_name: api-ingestion
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["api-ingestion:8000"]
+
+  - job_name: inference-worker
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["inference-worker:9101"]
